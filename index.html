@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Drone Delivery: Transforming Logistics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Interactive Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 45%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary-color);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Quiz */
+        .quiz-container {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: #eff6ff;
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background: #dbeafe;
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background: #d1fae5;
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--danger-color);
+            background: #fee2e2;
+        }
+
+        .quiz-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .quiz-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .quiz-button:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .quiz-feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Challenges Section */
+        .challenge-item {
+            background: var(--bg-white);
+            border-left: 4px solid var(--warning-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .challenge-item h4 {
+            color: var(--warning-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Benefits Section */
+        .benefit-item {
+            background: var(--bg-white);
+            border-left: 4px solid var(--success-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .benefit-item h4 {
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Cost Calculator */
+        .calculator {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .calculator-input {
+            margin-bottom: 1.5rem;
+        }
+
+        .calculator-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calculator-input input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .calculator-input input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .calculator-result {
+            background: #dbeafe;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .calculator-result h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-result .amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        .check-mark {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .x-mark {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent-color);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🚁 DroneLogistics</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#challenges">Challenges</a></li>
+                <li><a href="#calculator">Cost Calculator</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>AI-Driven Drone Delivery</h1>
+        <p>Transforming the Future of Logistics in the United States</p>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <span class="stat-number">$29B</span>
+                <span class="stat-label">Projected Market by 2035</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">60%</span>
+                <span class="stat-label">Faster Delivery Times</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">90%</span>
+                <span class="stat-label">Reduction in Carbon Emissions</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Section -->
+    <div class="container">
+        <section id="overview">
+            <h2>What is AI-Driven Drone Delivery?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>AI algorithms enable drones to navigate complex environments, avoid obstacles, and optimize delivery routes in real-time without human intervention.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <h3>Autonomous Operations</h3>
+                    <p>Drones can autonomously pick up packages from distribution centers, navigate to destinations, and complete deliveries with minimal human oversight.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Last-Mile Revolution</h3>
+                    <p>Transforming the most expensive and time-consuming part of delivery logistics through aerial solutions that bypass traffic congestion.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <h2>Evolution of Drone Delivery</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2013-2015</div>
+                        <h3>The Beginning</h3>
+                        <p>Amazon announces Prime Air initiative. Early experiments and FAA begins exploring drone delivery regulations.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016-2020</div>
+                        <h3>Regulatory Framework</h3>
+                        <p>FAA Part 107 rules established. Companies like Wing (Google) and Zipline begin pilot programs for medical supplies.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021-2025</div>
+                        <h3>Commercial Scaling</h3>
+                        <p>Major retailers launch limited commercial drone delivery services. AI capabilities significantly improve with advanced computer vision and path planning.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2026-2030</div>
+                        <h3>Mainstream Adoption</h3>
+                        <p>Projected widespread deployment across suburban and rural areas. Integration with smart city infrastructure and 5G networks.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2031-2035</div>
+                        <h3>Urban Integration</h3>
+                        <p>Dense urban drone traffic management systems operational. AI coordination enables thousands of simultaneous deliveries in major cities.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits">
+            <h2>Key Benefits</h2>
+            <div class="benefit-item">
+                <h4>⚡ Speed and Efficiency</h4>
+                <p>Drones can deliver packages in 30 minutes or less, bypassing traffic and reducing delivery times by up to 60% compared to traditional ground vehicles.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>🌱 Environmental Impact</h4>
+                <p>Electric drones produce zero direct emissions and can reduce the carbon footprint of last-mile delivery by up to 90%, contributing to sustainability goals.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>💰 Cost Reduction</h4>
+                <p>After initial infrastructure investment, operational costs can be 50-70% lower than traditional delivery methods, with no driver wages or fuel costs.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>🏥 Emergency Services</h4>
+                <p>Critical medical supplies, AED devices, and medications can reach remote or disaster-affected areas quickly, potentially saving lives.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>🌃 24/7 Operations</h4>
+                <p>Autonomous drones can operate around the clock without concerns about driver fatigue or labor regulations, increasing delivery capacity.</p>
+            </div>
+        </section>
+
+        <!-- Challenges Section -->
+        <section id="challenges">
+            <h2>Challenges and Considerations</h2>
+            <div class="challenge-item">
+                <h4>⚖️ Regulatory Hurdles</h4>
+                <p>The FAA continues to develop comprehensive regulations for Beyond Visual Line of Sight (BVLOS) operations. Current restrictions limit operational scalability, particularly in urban environments.</p>
+            </div>
+            <div class="challenge-item">
+                <h4>🔒 Safety and Security</h4>
+                <p>Concerns about mid-air collisions, falling packages, and cybersecurity vulnerabilities must be addressed. Public safety and privacy concerns remain significant barriers to adoption.</p>
+            </div>
+            <div class="challenge-item">
+                <h4>🌧️ Weather Limitations</h4>
+                <p>Current drone technology struggles with adverse weather conditions including high winds, heavy rain, and snow, limiting operational reliability to about 70% in some regions.</p>
+            </div>
+            <div class="challenge-item">
+                <h4>👷 Workforce Displacement</h4>
+                <p>Potential job losses in the courier and delivery sector raise social and economic concerns. An estimated 2.3 million delivery jobs in the US could be affected by 2035.</p>
+            </div>
+            <div class="challenge-item">
+                <h4>🔋 Technical Limitations</h4>
+                <p>Battery life, payload capacity (typically 5-10 lbs), and range (10-20 miles) constrain operational efficiency. Urban infrastructure and landing zones need significant development.</p>
+            </div>
+        </section>
+
+        <!-- Cost Calculator -->
+        <section id="calculator">
+            <h2>Delivery Cost Calculator</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Compare traditional delivery costs vs. drone delivery costs</p>
+            <div class="calculator">
+                <div class="calculator-input">
+                    <label for="deliveries">Number of Deliveries per Day:</label>
+                    <input type="number" id="deliveries" value="100" min="1" max="10000">
+                </div>
+                <div class="calculator-input">
+                    <label for="distance">Average Distance (miles):</label>
+                    <input type="number" id="distance" value="5" min="1" max="50">
+                </div>
+                <div class="calculator-input">
+                    <label for="days">Days per Year:</label>
+                    <input type="number" id="days" value="300" min="1" max="365">
+                </div>
+                <button class="quiz-button" onclick="calculateCost()">Calculate Savings</button>
+                <div class="calculator-result" id="calculatorResult" style="display: none;">
+                    <h4>Annual Cost Comparison</h4>
+                    <p>Traditional Delivery: <span class="amount" id="traditionalCost"></span></p>
+                    <p>Drone Delivery: <span class="amount" id="droneCost"></span></p>
+                    <p style="margin-top: 1rem; font-size: 1.25rem; color: var(--success-color); font-weight: bold;">
+                        Potential Savings: <span id="savings"></span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section>
+            <h2>Traditional vs. Drone Delivery</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Delivery</th>
+                            <th>Drone Delivery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Average Delivery Time (urban)</td>
+                            <td>2-4 hours</td>
+                            <td>15-30 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Cost per Delivery</td>
+                            <td>$8-12</td>
+                            <td>$2-4</td>
+                        </tr>
+                        <tr>
+                            <td>Carbon Emissions per Delivery</td>
+                            <td>~1.2 kg CO₂</td>
+                            <td>~0.1 kg CO₂</td>
+                        </tr>
+                        <tr>
+                            <td>24/7 Operation</td>
+                            <td class="x-mark">✗ Limited</td>
+                            <td class="check-mark">✓ Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Weather Dependency</td>
+                            <td class="check-mark">✓ Lower</td>
+                            <td class="x-mark">✗ Higher</td>
+                        </tr>
+                        <tr>
+                            <td>Payload Capacity</td>
+                            <td class="check-mark">✓ 50+ lbs</td>
+                            <td class="x-mark">✗ 5-10 lbs</td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td class="x-mark">✗ Limited by drivers</td>
+                            <td class="check-mark">✓ Highly scalable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz -->
+        <section id="quiz">
+            <h2>Test Your Knowledge</h2>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-question" id="quizQuestion"></div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <button class="quiz-button" id="quizSubmit" onclick="checkAnswer()">Submit Answer</button>
+                <button class="quiz-button" id="quizNext" onclick="nextQuestion()" style="display: none;">Next Question</button>
+                <div class="quiz-feedback" id="quizFeedback" style="display: none;"></div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <span id="quizScore"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Outlook -->
+        <section>
+            <h2>The Future of AI-Driven Delivery</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>2025-2027: Suburban Expansion</h3>
+                    <p>Regulatory approval for expanded BVLOS operations in low-density areas. Major e-commerce platforms deploy drone fleets for same-day delivery in suburban markets.</p>
+                </div>
+                <div class="card">
+                    <h3>2028-2030: Smart City Integration</h3>
+                    <p>Drone corridors established in urban areas with dedicated airspace management systems. Integration with smart traffic systems and IoT infrastructure becomes standard.</p>
+                </div>
+                <div class="card">
+                    <h3>2031-2035: Mass Adoption</h3>
+                    <p>AI coordination enables swarm operations with thousands of drones. Healthcare, retail, and food delivery industries heavily dependent on autonomous drone networks.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI-Driven Drone Delivery: Transforming Logistics</h3>
+            <p>An educational resource exploring the future of delivery technology</p>
+            <div class="footer-links">
+                <a href="#overview">Overview</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#calculator">Calculator</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 DroneLogistics Educational Project</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Cost Calculator
+        function calculateCost() {
+            const deliveries = parseFloat(document.getElementById('deliveries').value) || 0;
+            const distance = parseFloat(document.getElementById('distance').value) || 0;
+            const days = parseFloat(document.getElementById('days').value) || 0;
+
+            // Traditional delivery cost: $8-12 per delivery (using $10 average)
+            const traditionalPerDelivery = 10;
+            const traditionalAnnual = deliveries * days * traditionalPerDelivery;
+
+            // Drone delivery cost: $2-4 per delivery (using $3 average)
+            const dronePerDelivery = 3;
+            const droneAnnual = deliveries * days * dronePerDelivery;
+
+            const savings = traditionalAnnual - droneAnnual;
+            const savingsPercent = ((savings / traditionalAnnual) * 100).toFixed(0);
+
+            document.getElementById('traditionalCost').textContent = '$' + traditionalAnnual.toLocaleString();
+            document.getElementById('droneCost').textContent = '$' + droneAnnual.toLocaleString();
+            document.getElementById('savings').textContent = '$' + savings.toLocaleString() + ' (' + savingsPercent + '%)';
+            document.getElementById('calculatorResult').style.display = 'block';
+        }
+
+        // Quiz Data
+        const quizData = [
+            {
+                question: "What is the projected market size for drone delivery by 2035?",
+                options: ["$10 billion", "$29 billion", "$50 billion", "$75 billion"],
+                correct: 1,
+                explanation: "The drone delivery market is projected to reach $29 billion by 2035, driven by e-commerce growth and technological advancements."
+            },
+            {
+                question: "By what percentage can drone delivery reduce carbon emissions compared to traditional delivery?",
+                options: ["30%", "50%", "70%", "90%"],
+                correct: 3,
+                explanation: "Electric drones can reduce carbon emissions by up to 90% compared to traditional gas-powered delivery vehicles."
+            },
+            {
+                question: "What is the typical payload capacity of current commercial delivery drones?",
+                options: ["1-3 lbs", "5-10 lbs", "15-20 lbs", "25-30 lbs"],
+                correct: 1,
+                explanation: "Most current commercial delivery drones have a payload capacity of 5-10 pounds, limiting them to smaller packages."
+            },
+            {
+                question: "Which regulatory body oversees drone operations in the United States?",
+                options: ["FAA", "FCC", "FTC", "DOT"],
+                correct: 0,
+                explanation: "The Federal Aviation Administration (FAA) is responsible for regulating all aspects of civil aviation, including drone operations."
+            },
+            {
+                question: "What does BVLOS stand for in drone operations?",
+                options: ["Beyond Visual Line of Sight", "Basic Visual Logistics Operating System", "Battery Voltage Load Optimization System", "Beyond Vertical Landing Operations"],
+                correct: 0,
+                explanation: "BVLOS stands for Beyond Visual Line of Sight, referring to drone operations where the pilot cannot directly see the aircraft."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            document.getElementById('quizQuestion').textContent = `Question ${currentQuestion + 1} of ${quizData.length}: ${question.question}`;
+            
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'quiz-option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            document.getElementById('quizSubmit').style.display = 'block';
+            document.getElementById('quizNext').style.display = 'none';
+            document.getElementById('quizFeedback').style.display = 'none';
+            document.getElementById('quizSubmit').disabled = true;
+            selectedOption = null;
+            
+            updateScore();
+        }
+
+        function selectOption(index) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((opt, i) => {
+                opt.classList.remove('selected');
+                if (i === index) {
+                    opt.classList.add('selected');
+                }
+            });
+            selectedOption = index;
+            document.getElementById('quizSubmit').disabled = false;
+        }
+
+        function checkAnswer() {
+            if (selectedOption === null) return;
+            
+            const question = quizData[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('quizFeedback');
+            
+            options.forEach((opt, i) => {
+                if (i === question.correct) {
+                    opt.classList.add('correct');
+                } else if (i === selectedOption) {
+                    opt.classList.add('incorrect');
+                }
+                opt.onclick = null;
+            });
+            
+            if (selectedOption === question.correct) {
+                score++;
+                feedback.className = 'quiz-feedback correct';
+                feedback.textContent = '✓ Correct! ' + question.explanation;
+            } else {
+                feedback.className = 'quiz-feedback incorrect';
+                feedback.textContent = '✗ Incorrect. ' + question.explanation;
+            }
+            
+            feedback.style.display = 'block';
+            document.getElementById('quizSubmit').style.display = 'none';
+            document.getElementById('quizNext').style.display = 'block';
+            
+            updateScore();
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('quizScore').textContent = `Score: ${score} / ${quizData.length}`;
+        }
+
+        function showFinalScore() {
+            const percentage = (score / quizData.length * 100).toFixed(0);
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You really know your drone delivery facts!';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid understanding of drone delivery technology.';
+            } else {
+                message = 'Keep learning! Review the content above to learn more about drone delivery.';
+            }
+            
+            document.getElementById('quizContainer').innerHTML = `
+                <div style="text-align: center;">
+                    <h3>Quiz Complete!</h3>
+                    <div class="stat-number" style="color: var(--primary-color); margin: 2rem 0;">${score} / ${quizData.length}</div>
+                    <p style="font-size: 1.25rem; margin-bottom: 2rem;">${percentage}% Correct</p>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">${message}</p>
+                    <button class="quiz-button" onclick="resetQuiz()">Retake Quiz</button>
+                </div>
+            `;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quizContainer').innerHTML = `
+                <div class="quiz-question" id="quizQuestion"></div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <button class="quiz-button" id="quizSubmit" onclick="checkAnswer()">Submit Answer</button>
+                <button class="quiz-button" id="quizNext" onclick="nextQuestion()" style="display: none;">Next Question</button>
+                <div class="quiz-feedback" id="quizFeedback" style="display: none;"></div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <span id="quizScore"></span>
+                </div>
+            `;
+            loadQuestion();
+        }
+
+        // Initialize Quiz
+        loadQuestion();
+
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .timeline-item, .challenge-item, .benefit-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
