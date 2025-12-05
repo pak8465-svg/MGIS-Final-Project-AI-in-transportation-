@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - AI-Driven Drone Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🚁 DroneLogistics</a>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="regulations.html">Regulations</a></li>
+                <li><a href="game.html">Simulator</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero hero-small">
+        <h1>📚 Learning Resources</h1>
+        <p>Expand your knowledge of drone delivery technology and AI in transportation</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Interactive Quiz -->
+        <section>
+            <h2>Test Your Knowledge</h2>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-question" id="quizQuestion"></div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <button class="quiz-button" id="quizSubmit" onclick="checkAnswer()">Submit Answer</button>
+                <button class="quiz-button" id="quizNext" onclick="nextQuestion()" style="display: none;">Next Question</button>
+                <div class="quiz-feedback" id="quizFeedback" style="display: none;"></div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <span id="quizScore"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Organizations -->
+        <section>
+            <h2>🏢 Key Organizations & Companies</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Regulatory Bodies</h3>
+                    <ul>
+                        <li><strong>FAA</strong> - Federal Aviation Administration (US)</li>
+                        <li><strong>EASA</strong> - European Aviation Safety Agency (EU)</li>
+                        <li><strong>ICAO</strong> - International Civil Aviation Organization</li>
+                        <li><strong>ASTM</strong> - Standards development for drone operations</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Leading Operators</h3>
+                    <ul>
+                        <li><strong>Zipline</strong> - Medical supply delivery pioneer</li>
+                        <li><strong>Wing (Alphabet)</strong> - Suburban retail delivery</li>
+                        <li><strong>Amazon Prime Air</strong> - E-commerce delivery</li>
+                        <li><strong>UPS Flight Forward</strong> - Logistics and healthcare</li>
+                        <li><strong>Walmart GoLocal</strong> - Retail delivery network</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Technology Providers</h3>
+                    <ul>
+                        <li><strong>DJI</strong> - Consumer and enterprise drones</li>
+                        <li><strong>Matternet</strong> - Urban logistics drones</li>
+                        <li><strong>Skydio</strong> - Autonomous flight systems</li>
+                        <li><strong>AirMap</strong> - UTM and airspace management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Papers & Reports -->
+        <section>
+            <h2>📄 Research & Industry Reports</h2>
+            <div class="content-section">
+                <h3>Academic Research</h3>
+                <div class="benefit-item">
+                    <h4>AI and Machine Learning in Drone Operations</h4>
+                    <p>Research on computer vision, path planning algorithms, and autonomous navigation systems enabling safe drone delivery operations.</p>
+                    <p><strong>Key Topics:</strong> Deep learning for obstacle detection, reinforcement learning for route optimization, SLAM algorithms</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Urban Air Mobility and Traffic Management</h4>
+                    <p>Studies on integrating drones into urban airspace, including UTM systems, collision avoidance, and coordination with manned aircraft.</p>
+                    <p><strong>Key Topics:</strong> Airspace design, traffic flow optimization, communication protocols</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Environmental Impact Studies</h4>
+                    <p>Analysis of carbon emissions, noise pollution, and environmental benefits of electric drone delivery versus traditional methods.</p>
+                    <p><strong>Key Topics:</strong> Life cycle assessment, carbon footprint analysis, noise impact studies</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Industry Market Reports</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Report Title</th>
+                                <th>Organization</th>
+                                <th>Key Finding</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Global Drone Package Delivery Market</td>
+                                <td>Market Research Future</td>
+                                <td>$29B projected market by 2035</td>
+                                <td>2024</td>
+                            </tr>
+                            <tr>
+                                <td>Commercial Drone Market Assessment</td>
+                                <td>Goldman Sachs</td>
+                                <td>13% CAGR through 2030</td>
+                                <td>2023</td>
+                            </tr>
+                            <tr>
+                                <td>Urban Air Mobility Study</td>
+                                <td>NASA</td>
+                                <td>Safety and integration pathways</td>
+                                <td>2023</td>
+                            </tr>
+                            <tr>
+                                <td>Drone Delivery Cost-Benefit Analysis</td>
+                                <td>McKinsey & Company</td>
+                                <td>70% cost reduction potential</td>
+                                <td>2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Videos & Courses -->
+        <section>
+            <h2>🎥 Learning Opportunities</h2>
+            <div class="card-grid">
+                <div class="info-box">
+                    <h4>Online Courses</h4>
+                    <ul>
+                        <li><strong>FAA Part 107 Prep</strong> - Commercial drone pilot certification</li>
+                        <li><strong>Drone Technology and Applications</strong> - University courses via Coursera, edX</li>
+                        <li><strong>AI for Robotics</strong> - Udacity, focusing on autonomous systems</li>
+                        <li><strong>Aerospace Engineering Fundamentals</strong> - MIT OpenCourseWare</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h4>Recommended Documentaries</h4>
+                    <ul>
+                        <li><strong>"Age of AI"</strong> - YouTube Originals (includes drone delivery segment)</li>
+                        <li><strong>"The Future of Flying"</strong> - Discovery Channel</li>
+                        <li><strong>"Drone"</strong> - Documentary on drone technology evolution</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h4>Technical Channels</h4>
+                    <ul>
+                        <li><strong>Tested</strong> - In-depth drone technology reviews</li>
+                        <li><strong>Drone Racing League</strong> - Showcasing advanced flight capabilities</li>
+                        <li><strong>Official company channels</strong> - Wing, Amazon, Zipline demos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Books & Publications -->
+        <section>
+            <h2>📖 Recommended Reading</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Technical Books</h3>
+                    <ul>
+                        <li>"Fundamentals of Drone Technology" - A. Kumar</li>
+                        <li>"Artificial Intelligence: A Modern Approach" - Russell & Norvig</li>
+                        <li>"Introduction to Autonomous Mobile Robots" - Siegwart et al.</li>
+                        <li>"Drone Law and Policy" - J. Siebenmark</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Industry Analysis</h3>
+                    <ul>
+                        <li>"The Future of Logistics" - McKinsey Global Institute</li>
+                        <li>"Urban Air Mobility: Vision and Challenges" - Roland Berger</li>
+                        <li>"Last-Mile Delivery Revolution" - Deloitte Insights</li>
+                        <li>"Autonomous Systems: Opportunities and Risks" - WEF</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Policy & Society</h3>
+                    <ul>
+                        <li>"Drones and Society" - Bracken-Roche et al.</li>
+                        <li>"Technology and the Future of Work" - MIT Press</li>
+                        <li>"Smart Cities and Autonomous Vehicles" - Various authors</li>
+                        <li>"Privacy in the Age of Surveillance" - B. Schneier</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conferences & Events -->
+        <section>
+            <h2>🎪 Industry Conferences & Events</h2>
+            <div class="content-section">
+                <div class="card-grid">
+                    <div class="benefit-item">
+                        <h4>Commercial UAV Expo</h4>
+                        <p><strong>When:</strong> Annual (Fall)</p>
+                        <p><strong>Focus:</strong> Commercial drone applications, latest technology, networking</p>
+                        <p><strong>Audience:</strong> Industry professionals, operators, regulators</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>AUVSI XPONENTIAL</h4>
+                        <p><strong>When:</strong> Annual (Spring)</p>
+                        <p><strong>Focus:</strong> Unmanned systems, autonomous vehicles, robotics</p>
+                        <p><strong>Audience:</strong> Technology developers, military, commercial operators</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>DroneX Trade Show</h4>
+                        <p><strong>When:</strong> Annual (Various dates)</p>
+                        <p><strong>Focus:</strong> Drone technology, applications, regulations</p>
+                        <p><strong>Audience:</strong> End users, service providers, manufacturers</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>InterDrone</h4>
+                        <p><strong>When:</strong> Annual (Fall)</p>
+                        <p><strong>Focus:</strong> Enterprise drone solutions, case studies</p>
+                        <p><strong>Audience:</strong> Business decision makers, solution providers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Glossary -->
+        <section>
+            <h2>📝 Technical Glossary</h2>
+            <div class="content-section">
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AGL</strong></td>
+                                <td>Above Ground Level - altitude measured from the ground directly below</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BVLOS</strong></td>
+                                <td>Beyond Visual Line of Sight - operations where pilot cannot see drone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>C2 Link</strong></td>
+                                <td>Command and Control communication link between pilot and drone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DAA</strong></td>
+                                <td>Detect and Avoid - system for identifying and avoiding obstacles/aircraft</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Geofencing</strong></td>
+                                <td>Virtual boundaries that prevent drones from entering restricted areas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IMU</strong></td>
+                                <td>Inertial Measurement Unit - sensors measuring acceleration and rotation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LiDAR</strong></td>
+                                <td>Light Detection and Ranging - laser-based distance measurement</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Part 107</strong></td>
+                                <td>FAA regulations for commercial small UAS operations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Payload</strong></td>
+                                <td>Weight of cargo/equipment carried by drone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Remote ID</strong></td>
+                                <td>Broadcast identification and location information from drones</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RTH</strong></td>
+                                <td>Return to Home - automated return to takeoff point</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SLAM</strong></td>
+                                <td>Simultaneous Localization and Mapping - building maps while tracking position</td>
+                            </tr>
+                            <tr>
+                                <td><strong>UAS</strong></td>
+                                <td>Unmanned Aircraft System - includes drone, controller, and support equipment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>UTM</strong></td>
+                                <td>Unmanned Traffic Management - air traffic control system for drones</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VLOS</strong></td>
+                                <td>Visual Line of Sight - pilot can see drone with unaided vision</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VTOL</strong></td>
+                                <td>Vertical Takeoff and Landing - can launch/land without runway</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data & Statistics -->
+        <section>
+            <h2>📊 Industry Statistics & Data</h2>
+            <div class="card-grid">
+                <div class="stat-card">
+                    <span class="stat-number">$29B</span>
+                    <span class="stat-label">Global market value by 2035</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">13%</span>
+                    <span class="stat-label">Annual growth rate (CAGR)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">500K+</span>
+                    <span class="stat-label">Deliveries by Zipline to date</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Reduction in carbon emissions</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">Faster than ground delivery</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">Lower operational costs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Opportunities -->
+        <section>
+            <h2>💼 Career Opportunities</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Pilot & Operations</h3>
+                    <ul>
+                        <li>Commercial Drone Pilot (Part 107)</li>
+                        <li>Fleet Operations Manager</li>
+                        <li>Mission Planning Specialist</li>
+                        <li>Safety & Compliance Officer</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Engineering & Development</h3>
+                    <ul>
+                        <li>Autonomous Systems Engineer</li>
+                        <li>Computer Vision Specialist</li>
+                        <li>Aerospace Engineer</li>
+                        <li>Battery/Propulsion Engineer</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>AI & Software</h3>
+                    <ul>
+                        <li>Machine Learning Engineer</li>
+                        <li>Path Planning Algorithm Developer</li>
+                        <li>UTM Systems Developer</li>
+                        <li>Simulation & Testing Engineer</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Business & Strategy</h3>
+                    <ul>
+                        <li>Drone Delivery Program Manager</li>
+                        <li>Regulatory Affairs Specialist</li>
+                        <li>Market Development Manager</li>
+                        <li>Customer Success Manager</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved -->
+        <section>
+            <h2>🤝 Get Involved</h2>
+            <div class="content-section">
+                <div class="card-grid">
+                    <div class="benefit-item">
+                        <h4>Join Professional Organizations</h4>
+                        <ul>
+                            <li>Association for Unmanned Vehicle Systems International (AUVSI)</li>
+                            <li>Commercial Drone Alliance</li>
+                            <li>Drone Pilots Federation</li>
+                            <li>Local drone user groups</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Participate in Research</h4>
+                        <ul>
+                            <li>NASA UTM research programs</li>
+                            <li>FAA BEYOND initiative</li>
+                            <li>University research partnerships</li>
+                            <li>Industry pilot programs</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Build Your Skills</h4>
+                        <ul>
+                            <li>Obtain FAA Part 107 certification</li>
+                            <li>Learn programming (Python, C++)</li>
+                            <li>Study robotics and AI</li>
+                            <li>Practice with simulation software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="text-align: center; padding: 3rem 0;">
+            <h2>Continue Learning</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Explore all aspects of drone delivery technology</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="technology.html" class="btn btn-primary">Technology Details</a>
+                <a href="case-studies.html" class="btn btn-primary">Real-World Examples</a>
+                <a href="game.html" class="btn btn-primary">Try Simulator</a>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI-Driven Drone Delivery: Transforming Logistics</h3>
+            <p>An educational resource exploring the future of delivery technology</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="technology.html">Technology</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="game.html">Simulator</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 DroneLogistics Educational Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

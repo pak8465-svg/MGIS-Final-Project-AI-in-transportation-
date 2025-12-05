@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology - AI-Driven Drone Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🚁 DroneLogistics</a>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="regulations.html">Regulations</a></li>
+                <li><a href="game.html">Simulator</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero hero-small">
+        <h1>🤖 Technology Behind Drone Delivery</h1>
+        <p>Understanding the AI, hardware, and systems that make autonomous delivery possible</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- AI Systems -->
+        <section>
+            <h2>Artificial Intelligence Systems</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Computer Vision</h3>
+                    <p>Advanced neural networks process real-time video feeds to identify obstacles, landing zones, people, and other aircraft. Uses deep learning models trained on millions of images to recognize patterns and make split-second decisions.</p>
+                    <div class="info-box">
+                        <strong>Key Technologies:</strong>
+                        <ul>
+                            <li>Convolutional Neural Networks (CNNs)</li>
+                            <li>Object detection (YOLO, SSD)</li>
+                            <li>Semantic segmentation</li>
+                            <li>Real-time image processing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🗺️</div>
+                    <h3>Path Planning</h3>
+                    <p>AI algorithms calculate optimal routes considering weather, air traffic, no-fly zones, and energy efficiency. Constantly recalculates paths to adapt to changing conditions in real-time.</p>
+                    <div class="info-box">
+                        <strong>Algorithms Used:</strong>
+                        <ul>
+                            <li>A* and D* path finding</li>
+                            <li>Rapidly-exploring Random Trees (RRT)</li>
+                            <li>Machine learning route optimization</li>
+                            <li>Dynamic replanning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Autonomous Navigation</h3>
+                    <p>GPS-denied navigation using Visual-Inertial Odometry (VIO) and SLAM (Simultaneous Localization and Mapping) enables operation even when GPS signals are weak or unavailable.</p>
+                    <div class="info-box">
+                        <strong>Navigation Systems:</strong>
+                        <ul>
+                            <li>GPS/GNSS primary positioning</li>
+                            <li>Visual odometry backup</li>
+                            <li>Inertial Measurement Units (IMU)</li>
+                            <li>LiDAR mapping</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hardware Components -->
+        <section>
+            <h2>Hardware Architecture</h2>
+
+            <div class="content-section">
+                <h3>🔋 Power Systems</h3>
+                <p>Modern delivery drones rely on advanced lithium-polymer batteries with high energy density. Current systems provide 20-40 minutes of flight time with typical payloads.</p>
+
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Specification</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Battery Type</td>
+                                <td>LiPo 6S-12S (22-44V)</td>
+                                <td>Main power source</td>
+                            </tr>
+                            <tr>
+                                <td>Capacity</td>
+                                <td>10,000-30,000 mAh</td>
+                                <td>Flight endurance</td>
+                            </tr>
+                            <tr>
+                                <td>Charging Time</td>
+                                <td>45-90 minutes</td>
+                                <td>Turnaround speed</td>
+                            </tr>
+                            <tr>
+                                <td>Weight</td>
+                                <td>1-4 kg</td>
+                                <td>Efficiency balance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📡 Sensor Array</h3>
+                <p>Delivery drones are equipped with multiple redundant sensors for safety and reliability:</p>
+
+                <div class="card-grid">
+                    <div class="benefit-item">
+                        <h4>Cameras</h4>
+                        <p>Multiple high-resolution cameras (4K+) provide 360° vision. Stereo pairs enable depth perception for obstacle avoidance.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>LiDAR</h4>
+                        <p>Laser ranging sensors create 3D maps of surroundings, effective up to 100+ meters in all lighting conditions.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Radar</h4>
+                        <p>Weather-resistant obstacle detection and collision avoidance, particularly useful in poor visibility.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Ultrasonic</h4>
+                        <p>Close-range sensors (0.1-5 meters) for precision landing and near-obstacle detection.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>IMU</h4>
+                        <p>Accelerometers and gyroscopes track orientation and movement with millisecond precision.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Barometer</h4>
+                        <p>Altitude measurement with centimeter accuracy for stable hover and precise landing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📦 Delivery Mechanisms</h3>
+                <p>Various payload delivery systems have been developed:</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Winch System</h4>
+                        <p>Packages are lowered on a tether from hovering drone. Allows delivery without landing, reducing risk and enabling delivery to confined spaces.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Landing & Release</h4>
+                        <p>Drone lands and releases package via motorized compartment. More stable but requires clear landing zone.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Drop System</h4>
+                        <p>Controlled drop from low altitude with cushioning. Fast but requires open ground space and careful package protection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Communication Systems -->
+        <section>
+            <h2>Communication & Connectivity</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📶</div>
+                    <h3>4G/5G Cellular</h3>
+                    <p>Primary communication link for control commands, telemetry, and video streaming. 5G enables high-bandwidth, low-latency communication essential for urban operations.</p>
+                    <ul>
+                        <li>Real-time video streaming</li>
+                        <li>Telemetry data transmission</li>
+                        <li>Fleet coordination</li>
+                        <li>Emergency communication</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛰️</div>
+                    <h3>Satellite Links</h3>
+                    <p>Backup communication for rural and remote operations where cellular coverage is limited. Provides global connectivity for expanded operational areas.</p>
+                    <ul>
+                        <li>Rural area coverage</li>
+                        <li>Emergency backup</li>
+                        <li>Long-range operations</li>
+                        <li>GPS augmentation</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Encrypted Data</h3>
+                    <p>All communications use military-grade encryption (AES-256) to prevent hijacking and protect customer privacy. Includes anti-spoofing GPS protection.</p>
+                    <ul>
+                        <li>End-to-end encryption</li>
+                        <li>Anti-jamming measures</li>
+                        <li>Secure authentication</li>
+                        <li>Privacy protection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- UTM Systems -->
+        <section>
+            <h2>UTM: Unmanned Traffic Management</h2>
+
+            <div class="content-section">
+                <p style="font-size: 1.1rem;">UTM systems are the "air traffic control" for drones, enabling safe coordination of thousands of simultaneous flights.</p>
+
+                <div class="card-grid">
+                    <div class="benefit-item">
+                        <h4>🗺️ Airspace Management</h4>
+                        <p>Digital mapping of 3D flight corridors, no-fly zones, and temporary restrictions. Real-time updates pushed to all active drones.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🚦 Traffic Coordination</h4>
+                        <p>AI algorithms manage flight paths to prevent collisions, optimize routes, and maintain safe separation distances between aircraft.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>☁️ Weather Integration</h4>
+                        <p>Real-time weather data integration adjusts routes and grounds flights when conditions exceed safety thresholds.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🚨 Emergency Protocols</h4>
+                        <p>Automated emergency landing site identification, collision avoidance, and return-to-home procedures in case of system failures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Systems -->
+        <section>
+            <h2>Safety & Redundancy</h2>
+
+            <div class="warning-box">
+                <h4>⚠️ Safety First Approach</h4>
+                <p>Commercial delivery drones implement multiple layers of redundancy to ensure safe operation even when individual components fail.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="challenge-item">
+                    <h4>Redundant Flight Controllers</h4>
+                    <p>Dual or triple independent flight control systems. If primary controller fails, backup takes over seamlessly within milliseconds.</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Fail-Safe Landing</h4>
+                    <p>If critical systems fail, drone initiates automated emergency landing at pre-identified safe zones or returns to launch point.</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Geofencing</h4>
+                    <p>Virtual boundaries prevent drones from entering restricted airspace. Hard-coded limits cannot be overridden remotely.</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Parachute Systems</h4>
+                    <p>Some models include ballistic parachutes that deploy automatically if catastrophic failure is detected, ensuring controlled descent.</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Battery Management</h4>
+                    <p>Intelligent systems monitor battery health and automatically return drone to base with sufficient reserve power (typically 20-30%).</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Collision Avoidance</h4>
+                    <p>Multi-sensor fusion detects obstacles and automatically maneuvers to avoid collisions with aircraft, birds, buildings, and ground obstacles.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Technology -->
+        <section>
+            <h2>Emerging Technologies</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Hydrogen Fuel Cells</h3>
+                    <p>Next-generation power systems could extend flight times to 2-4 hours and increase payload capacity significantly. Several companies are actively testing prototypes.</p>
+                </div>
+                <div class="card">
+                    <h3>Swarm Intelligence</h3>
+                    <p>AI enables coordinated multi-drone operations where fleets work together, sharing sensor data and optimizing collective performance.</p>
+                </div>
+                <div class="card">
+                    <h3>Quantum Sensing</h3>
+                    <p>Ultra-precise navigation and sensing using quantum technologies could enable operation in GPS-denied environments with unprecedented accuracy.</p>
+                </div>
+                <div class="card">
+                    <h3>Edge AI Chips</h3>
+                    <p>Purpose-built AI processors enable more sophisticated on-board computation, reducing latency and enabling operation with intermittent connectivity.</p>
+                </div>
+                <div class="card">
+                    <h3>Advanced Materials</h3>
+                    <p>Carbon fiber composites and metamaterials reduce weight while increasing strength. Some designs incorporate self-healing materials.</p>
+                </div>
+                <div class="card">
+                    <h3>Hybrid VTOL</h3>
+                    <p>Combining vertical takeoff with fixed-wing flight extends range to 50+ miles while maintaining ability to deliver to confined spaces.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="text-align: center; padding: 3rem 0;">
+            <h2>Explore Real-World Applications</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">See how these technologies are being deployed today</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="case-studies.html" class="btn btn-primary">View Case Studies</a>
+                <a href="game.html" class="btn btn-primary">Try Our Simulator</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI-Driven Drone Delivery: Transforming Logistics</h3>
+            <p>An educational resource exploring the future of delivery technology</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="technology.html">Technology</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="game.html">Simulator</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 DroneLogistics Educational Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
