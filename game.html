@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Delivery Simulator - AI-Driven Drone Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #gameCanvas {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 100%);
+            border: 3px solid var(--primary-color);
+            border-radius: 12px;
+            margin: 0 auto;
+            display: block;
+            cursor: crosshair;
+            position: relative;
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .game-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .game-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .game-btn:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+        }
+
+        .game-instructions {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .difficulty-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .difficulty-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .difficulty-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .game-over-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: center;
+            display: none;
+            z-index: 100;
+        }
+
+        .game-over-screen.show {
+            display: block;
+        }
+
+        .progress-container {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar-game {
+            width: 100%;
+            height: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .weather-indicator {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 0.5rem;
+        }
+
+        .weather-clear { background: #d1fae5; color: #065f46; }
+        .weather-rain { background: #dbeafe; color: #1e40af; }
+        .weather-wind { background: #fef3c7; color: #92400e; }
+        .weather-storm { background: #fee2e2; color: #991b1b; }
+
+        .achievement-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: slideIn 0.5s ease-out;
+            z-index: 1000;
+            display: none;
+        }
+
+        .achievement-popup.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🚁 DroneLogistics</a>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="regulations.html">Regulations</a></li>
+                <li><a href="game.html">Simulator</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero hero-small">
+        <h1>🎮 Drone Delivery Simulator</h1>
+        <p>Experience the challenges and excitement of drone delivery operations</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="game-container">
+            <!-- Instructions -->
+            <div class="game-instructions">
+                <h3>How to Play</h3>
+                <p><strong>Objective:</strong> Deliver as many packages as possible while managing your battery and avoiding obstacles!</p>
+                <ul style="margin-top: 1rem;">
+                    <li><strong>Click</strong> on delivery locations to send your drone</li>
+                    <li><strong>Avoid obstacles</strong> like birds, buildings, and no-fly zones</li>
+                    <li><strong>Monitor battery</strong> - return to base before it runs out!</li>
+                    <li><strong>Watch the weather</strong> - storms reduce delivery success rate</li>
+                    <li><strong>Earn money</strong> for successful deliveries to upgrade your drone</li>
+                </ul>
+            </div>
+
+            <!-- Difficulty Selector -->
+            <div>
+                <h4 style="text-align: center; margin-bottom: 0.5rem;">Select Difficulty:</h4>
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn active" onclick="setDifficulty('easy')" id="easyBtn">Easy</button>
+                    <button class="difficulty-btn" onclick="setDifficulty('medium')" id="mediumBtn">Medium</button>
+                    <button class="difficulty-btn" onclick="setDifficulty('hard')" id="hardBtn">Hard</button>
+                </div>
+            </div>
+
+            <!-- Game Stats -->
+            <div class="game-stats">
+                <div class="stat-box">
+                    <h4>Score</h4>
+                    <div class="stat-value" id="scoreDisplay">0</div>
+                </div>
+                <div class="stat-box">
+                    <h4>Deliveries</h4>
+                    <div class="stat-value" id="deliveriesDisplay">0</div>
+                </div>
+                <div class="stat-box">
+                    <h4>Money</h4>
+                    <div class="stat-value" id="moneyDisplay">$0</div>
+                </div>
+                <div class="stat-box">
+                    <h4>Level</h4>
+                    <div class="stat-value" id="levelDisplay">1</div>
+                </div>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Battery</span>
+                    <span id="batteryPercent">100%</span>
+                </div>
+                <div class="progress-bar-game">
+                    <div class="progress-fill" id="batteryBar" style="width: 100%"></div>
+                </div>
+            </div>
+
+            <!-- Weather Display -->
+            <div style="text-align: center;">
+                <span class="weather-indicator weather-clear" id="weatherDisplay">☀️ Clear Skies</span>
+            </div>
+
+            <!-- Game Canvas -->
+            <div style="position: relative; margin: 2rem 0;">
+                <canvas id="gameCanvas" width="800" height="500"></canvas>
+
+                <!-- Game Over Screen -->
+                <div class="game-over-screen" id="gameOverScreen">
+                    <h2 id="gameOverTitle">Game Over!</h2>
+                    <p id="gameOverMessage" style="font-size: 1.2rem; margin: 1rem 0;"></p>
+                    <div style="margin: 2rem 0;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);" id="finalScore">0</div>
+                        <p>Final Score</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; margin: 2rem 0;">
+                        <div>
+                            <strong>Deliveries:</strong>
+                            <span id="finalDeliveries">0</span>
+                        </div>
+                        <div>
+                            <strong>Money Earned:</strong>
+                            <span id="finalMoney">$0</span>
+                        </div>
+                        <div>
+                            <strong>Success Rate:</strong>
+                            <span id="successRate">0%</span>
+                        </div>
+                        <div>
+                            <strong>Level Reached:</strong>
+                            <span id="finalLevel">1</span>
+                        </div>
+                    </div>
+                    <button class="game-btn" onclick="restartGame()">Play Again</button>
+                </div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button class="game-btn" id="startBtn" onclick="startGame()">Start Game</button>
+                <button class="game-btn" id="pauseBtn" onclick="togglePause()" disabled>Pause</button>
+                <button class="game-btn" id="returnBtn" onclick="returnToBase()" disabled>Return to Base</button>
+            </div>
+
+            <!-- Upgrade Shop -->
+            <div class="content-section" style="margin-top: 3rem;">
+                <h3>Drone Upgrades</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Battery Upgrade</h4>
+                        <p>Increase maximum battery capacity</p>
+                        <p><strong>Cost:</strong> $500</p>
+                        <button class="btn" onclick="buyUpgrade('battery')">Purchase</button>
+                    </div>
+                    <div class="card">
+                        <h4>Speed Boost</h4>
+                        <p>Increase drone flight speed</p>
+                        <p><strong>Cost:</strong> $750</p>
+                        <button class="btn" onclick="buyUpgrade('speed')">Purchase</button>
+                    </div>
+                    <div class="card">
+                        <h4>Weather Resistance</h4>
+                        <p>Reduce weather impact on deliveries</p>
+                        <p><strong>Cost:</strong> $1000</p>
+                        <button class="btn" onclick="buyUpgrade('weather')">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Content -->
+        <section style="margin-top: 4rem;">
+            <h2>Learn While You Play</h2>
+            <div class="card-grid">
+                <div class="info-box">
+                    <h4>Battery Management</h4>
+                    <p>Real delivery drones must carefully manage battery life. Most reserve 20-30% for emergencies and return flight, just like in our simulator!</p>
+                </div>
+                <div class="info-box">
+                    <h4>Weather Challenges</h4>
+                    <p>Actual drone operations are highly weather-dependent. High winds, rain, and storms ground commercial drones, reducing operational reliability to about 70% in some regions.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Route Optimization</h4>
+                    <p>AI algorithms in real drones constantly optimize routes based on weather, obstacles, and energy efficiency - similar to the path planning in this game.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement-popup" id="achievementPopup">
+        <strong>Achievement Unlocked!</strong>
+        <p id="achievementText"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI-Driven Drone Delivery: Transforming Logistics</h3>
+            <p>An educational resource exploring the future of delivery technology</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="technology.html">Technology</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="game.html">Simulator</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 DroneLogistics Educational Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
